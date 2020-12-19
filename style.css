@@ -1,0 +1,9 @@
+/* GENERAL */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: url("img/got-background.jpg") no-repeat center center fixed; 
+    background-size: cover;
+}
