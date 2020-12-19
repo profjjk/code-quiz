@@ -35,11 +35,11 @@ This is a Game of Thrones themed quiz.
 Images:
 * [Background Image](https://media1.popsugar-assets.com/files/thumbor/RULArzi8uqr7dtQN78pzJIG1MBc/fit-in/2048xorig/filters:format_auto-!!-:strip_icc-!!-/2020/04/08/960/n/1922507/c39129f5495d5fb5_game_of_thrones/i/Game-Thrones-Zoom-Background.jpg)
 
-Fonts:
+Custom font:
 * [Game of Thrones font](https://fontmeme.com/fonts/game-of-thrones-font/)
 * [Font Squirrel](https://www.fontsquirrel.com/)
 
-Quiz's:
+Quiz questions:
 * [Clay's Quiz](https://www.allthetests.com/tests-for-the-real-fan/books-quizzes/other-books/quiz31/1418776957/game-of-thrones-book-1-5-quiz)
 * [Jinny's Quiz](https://www.goodreads.com/quizzes/9484-a-song-of-ice-and-fire-quiz)
 * [The Guardian's Quiz](https://www.theguardian.com/tv-and-radio/quiz/2015/apr/11/game-of-thrones-quiz)
