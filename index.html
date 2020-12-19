@@ -5,12 +5,14 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+
         <!-- My stylesheet -->
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
 
         <!-- Google font links -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+        
 
         <title>GoT Nerd Quiz</title>
     </head>
@@ -18,14 +20,14 @@
         <!-- Scoreboard & Timer -->
         <header class="row">
             <div class="col-3" id="scoreboard">Scoreboard</div>
-            <div class="col-6" id="title">Game Title<br><span>Quiz</span></div>
+            <div class="col-6" id="title">Game Of Thrones<br><span>Quiz</span></div>
             <div class="col-3" id="timer">Timer</div>
         </header>
 
         <main class="row">
             <section class="col-6" id="game-box">
                 <div id="question-section">
-                    <h1>Game Questions will go here.</h1> 
+                    <h1 id="question-text">Game Questions will go here.</h1> 
                 </div>
                 <div id="answer-section">
                     <button>Answer</button>
@@ -35,7 +37,7 @@
                 </div> 
                 <div id="result-section">
                     <hr>
-                    <h2>This will appear to inform the player if they answered correctly.</h2>
+                    <h2 id="result-text">This will appear to inform the player if they answered correctly.</h2>
                 </div>
             </section>
         </main>

@@ -3,8 +3,17 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'game_of_thronesregular';
+    src: url('game_of_thrones-webfont.woff2') format('woff2'),
+         url('game_of_thrones-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body {
-    background: url("img/got-background.jpg") no-repeat center center fixed; 
+    background: url("../img/got-background.jpg") no-repeat center center fixed; 
     background-size: cover;
 }
 
@@ -12,8 +21,6 @@ body {
     display: flex;
     flex-flow: row wrap;
 }
-
-/* font-family: 'Cinzel Decorative', cursive; */
 
 /* HEADER */
 
@@ -30,18 +37,20 @@ body {
     font-size: 16px;
     text-align: start;
     color: #fff;
+    padding: 1% 0 0 1%;
 }
 
 #title {
-    font-family: 'Cinzel Decorative', cursive;
-    font-size: 44px;
+    font-family: 'game_of_thronesregular', 'Cinzel Decorative', cursive;
+    font-size: 64px;
     text-align: center;
     color: #fff;
+    margin-top: 3%;
 }
 
 span {
     font-family: 'Cinzel Decorative', cursive;
-    font-size: 20px;
+    font-size: 24px;
     text-align: center;
     color: #fff;
 }
@@ -51,29 +60,33 @@ span {
     font-size: 16px;
     text-align: end;
     color: #fff;
+    padding: 1% 1% 0 0;
 }
 
 /* MAIN */
 
 #game-box {
-    margin: 10% auto; 
+    margin: 8% auto; 
     background: #fff;
     opacity: 80%;
     width: 50%;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
-h1 {
+#question-section {
+    margin: 5% auto;
+    width: 70%;
+    align-items: flex-start;
+}
+
+#question-text {
     font-family: 'Cinzel Decorative', cursive;
     font-size: 28px;
-    margin: 5% auto;
-    width: 60%;
-    align-items: flex-start;
 }
 
 #answer-section {
     margin: 5% auto;
-    width: 60%;
+    width: 70%;
     align-items: center;
 }
 
@@ -84,10 +97,12 @@ button {
 }
 
 #result-section {
-    font-family: 'Cinzel Decorative', cursive;
-    font-size: 18px;
-    font-weight: 300;
     margin: 5% auto;
-    width: 60%;
+    width: 70%;
     align-items: flex-end;
+}
+
+#result-text {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 16px;
 }
