@@ -9,26 +9,34 @@
         <link rel="stylesheet" type="text/css" href="style.css">
 
         <!-- Google font links -->
-
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
 
         <title>GoT Nerd Quiz</title>
     </head>
     <body>
         <!-- Scoreboard & Timer -->
-        <header>
-            <div id="top-bar">
-                <!-- Link to scoreboard -->
-                <div id="scoreboard" href="#">Scoreboard</div>
-                <div id="timer">Timer</div>
-            </div>
+        <header class="row">
+            <div class="col-3" id="scoreboard">Scoreboard</div>
+            <div class="col-6" id="title">Game Title<br><span>Quiz</span></div>
+            <div class="col-3" id="timer">Timer</div>
         </header>
 
         <main class="row">
-            <section class="col">
-                <h1 id="question">Game Questions</h1>  
-                <div>
-
+            <section class="col-6" id="game-box">
+                <div id="question-section">
+                    <h1>Game Questions will go here.</h1> 
+                </div>
+                <div id="answer-section">
+                    <button>Answer</button>
+                    <button>Answer</button>
+                    <button>Answer</button>
+                    <button>Answer</button>
                 </div> 
+                <div id="result-section">
+                    <hr>
+                    <h2>This will appear to inform the player if they answered correctly.</h2>
+                </div>
             </section>
         </main>
         
