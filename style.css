@@ -7,3 +7,41 @@ body {
     background: url("img/got-background.jpg") no-repeat center center fixed; 
     background-size: cover;
 }
+
+/* HEADER */
+header {
+    width: 90%;
+    margin: 2% auto;
+}
+
+header div #scoreboard {
+    color: #fff;
+    float: left;
+}
+
+header div #timer {
+    color: #fff;
+    float: right;
+}
+
+/* MAIN */
+
+.row {  
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.col {
+    margin: 10% auto; 
+    background: #fff;
+    opacity: 80%;
+    width: 60%;
+    border-radius: 5px;
+}
+
+h1 {
+    margin: 5% auto;
+    width: 60%;
+    align-items: flex-start;
+
+}
