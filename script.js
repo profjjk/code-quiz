@@ -60,43 +60,55 @@ var quizList = [
     points: 3,
     origin: "book",
     footnote: "FUN FACT: When Emilia Clarke first met her on-screen husband Jason Momoa, he screamed 'WIFEY!', ran across the hall, and rugby-tackled her to the floor."}];
-
+// Holding containers to track answers, points, and progress.
 var answerList = [];
 var quizProgress = 0;
 var pointsTotal = 0;
-
-// function logquizObjects() {
-//     for (var i = 0; i < quizList.length; i++) {
-//         console.log("Question: " + quizList[i].q);
-//         console.log("Possible answers: " + quizList[i].a[0] + ", " + quizList[i].a[1] + ", " + quizList[i].a[2] + ", " + quizList[i].a[3]);
-//         console.log("Correct answer: " + quiz[i].correct);
-//         console.log("Points: " + quizList[i].points);
-//         console.log("Origin: " + quizList[i].origin);
-//         console.log(quizList[i].footnote);
-//         console.log("*****");
-//     }
-// };
-// logquizObjects()
-
-// DECLARE VARIABLES FOR CREATING ELEMENTS.
-// var h1Tag = document.createElement("h1");
-// var b1Tag = document.createElement("button");
-// var b2Tag = document.createElement("button");
-// var b3Tag = document.createElement("button");
-// var b4Tag = document.createElement("button");
-// var hrTag = document.createElement("hr");
-// var h2Tag = document.createElement("h2");
-
-var h1Tag = document.getElementById("question-text");
+// Create pointers.
+var divQ = document.getElementById("question-section");
+var divA = document.getElementById("answer-section");
+var divF = document.getElementById("fact-section");
+var h1Wel = document.getElementById("welcome");
+var h1Tag = document.getElementById("question");
+var b1Beg = document.getElementById("begin");
 var b1Tag = document.getElementById("answer1");
 var b2Tag = document.getElementById("answer2");
 var b3Tag = document.getElementById("answer3");
 var b4Tag = document.getElementById("answer4");
 var h2Tag = document.getElementById("footnote");
-var buttonList = document.getElementsByClassName("button");
+
+///// CREATE ELEMENTS /////
+// Create elements.
+// h1Wel = document.createElement("h1");
+h1Tag = document.createElement("h1");
+// b1Beg = document.createElement("button");
+b1Tag = document.createElement("button");
+b2Tag = document.createElement("button");
+b3Tag = document.createElement("button");
+b4Tag = document.createElement("button");
+hrTag = document.createElement("hr");
+h2Tag = document.createElement("h2");
+// Assign attributes to elements.
+// h1Wel.setAttribute("id", "welcome");
+// b1Beg.setAttribute("id", "begin");
+h1Tag.setAttribute("id", "question-text");
+b1Tag.setAttribute("class", "button");
+b1Tag.setAttribute("id", "answer1");
+b2Tag.setAttribute("class", "button");
+b2Tag.setAttribute("id", "answer2");
+b3Tag.setAttribute("class", "button");
+b3Tag.setAttribute("id", "answer3");
+b4Tag.setAttribute("class", "button");
+b4Tag.setAttribute("id", "answer4");
+h2Tag.setAttribute("id", "footnote");
+
+
+
+
+
 
 ///// FUNCTIONS /////
-
+// Retrieve data from quizList.
 function getquizObjects() {
     h1Tag.textContent = quizList[quizProgress].q;
     b1Tag.textContent = quizList[quizProgress].a[0];
@@ -105,42 +117,65 @@ function getquizObjects() {
     b4Tag.textContent = quizList[quizProgress].a[3];
     h2Tag.textContent = quizList[quizProgress].footnote;
 }
+// Record button clicks.
 function recordAnswerB1() {
     answerList.push(b1Tag.textContent);
     if (answerList[quizProgress] === quizList[quizProgress].correct) {
         pointsTotal += quizList[quizProgress].points;
     }
+    quizProgress++;
 }
 function recordAnswerB2() {
     answerList.push(b2Tag.textContent);
     if (answerList[quizProgress] === quizList[quizProgress].correct) {
         pointsTotal += quizList[quizProgress].points;
-
     }
+    quizProgress++;
 }
 function recordAnswerB3() {
     answerList.push(b3Tag.textContent);
     if (answerList[quizProgress] === quizList[quizProgress].correct) {
         pointsTotal += quizList[quizProgress].points;
     }
+    quizProgress++;
 }
 function recordAnswerB4() {
     answerList.push(b4Tag.textContent);
     if (answerList[quizProgress] === quizList[quizProgress].correct) {
         pointsTotal += quizList[quizProgress].points;
     }
+    quizProgress++;
+}
+// Remove elements.
+function removeWelcome() {
+    divQ.removeChild(h1Wel);
+    divA.removeChild(b1Beg);
+}
+// Add elements.
+function addQuizElements() {
+    divQ.appendChild(h1Tag);
+    divA.appendChild(b1Tag);
+    divA.appendChild(b2Tag);
+    divA.appendChild(b3Tag);
+    divA.appendChild(b4Tag);
+    divF.appendChild(hrTag);
+    divF.appendChild(h2Tag);
 }
 
 ///// EVENT LISTENERS /////
-// Record answers to answerList and add points to pointsTotal.
+// Welcome - quiz transition.
+b1Beg.addEventListener("click", removeWelcome);
+b1Beg.addEventListener("click", addQuizElements);
+b1Beg.addEventListener("click", getquizObjects);
+// Record answers and assign points.
 b1Tag.addEventListener("click", recordAnswerB1);
 b2Tag.addEventListener("click", recordAnswerB2);
 b3Tag.addEventListener("click", recordAnswerB3);
 b4Tag.addEventListener("click", recordAnswerB4);
+// Write quiz data to page.
+b1Tag.addEventListener("click", getquizObjects);
+b2Tag.addEventListener("click", getquizObjects);
+b3Tag.addEventListener("click", getquizObjects);
+b4Tag.addEventListener("click", getquizObjects);
 
 ///// EXECUTE /////
-getquizObjects();
-
-console.log(answerList);
-console.log(pointsTotal);
-console.log(quizProgress);
