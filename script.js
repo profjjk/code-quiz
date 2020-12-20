@@ -146,12 +146,23 @@ function recordAnswerB4() {
     }
     quizProgress++;
 }
-// Remove elements.
+// Remove game elements on completion.
+function endGame() {
+    if (quizProgress > quizList.length) {
+        divA.removeChild(b1Tag);
+        divA.removeChild(b2Tag);
+        divA.removeChild(b3Tag);
+        divA.removeChild(b4Tag);
+        divF.removeChild(hrTag);
+        divF.removeChild(h2Tag);
+    }
+}
+// Remove welcome elements.
 function removeWelcome() {
     divQ.removeChild(h1Wel);
     divA.removeChild(b1Beg);
 }
-// Add elements.
+// Add game elements.
 function addQuizElements() {
     divQ.appendChild(h1Tag);
     divA.appendChild(b1Tag);
@@ -179,3 +190,4 @@ b3Tag.addEventListener("click", getquizObjects);
 b4Tag.addEventListener("click", getquizObjects);
 
 ///// EXECUTE /////
+endGame();
