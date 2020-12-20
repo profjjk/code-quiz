@@ -6,6 +6,18 @@ var quizList = [
     points: 2,
     origin: "show",
     footnote: "FUN FACT: Although Sansa's direwolf, Lady, saw an untimely end in the show, the dog who played the well-behaved beast survived the ordeal and was later adopted by Sophie Turner, the actress that played Sansa Stark."},
+    {q: "Whose sigil is a spear piercing the sun?",
+    a: ["House Manderly", "House Martell", "House Redwine", "House Mormont"],
+    correct: "House Martell",
+    points: 3,
+    origin: "book",
+    footnote: '"A mind needs books as a sword needs a whetstone, if it is to keep its edge." — Tyrion Lannister'},
+    {q: "Who is the Red Viper of Dorne?",
+    a: ["Ellaria Sand", "Nymeria Sand", "Oberyn Martell", "Doran Martell"],
+    correct: "Oberyn Martell",
+    points: 2,
+    origin: "show",
+    footnote: '"What do we say to the Lord of Death? Not today." — Syrio Forel'},
     {q: "Which of the seven kingdoms was not conquered by Aegon I?",
     a: ["The Vale", "The North", "Dorne", "The Iron Islands"],
     correct: "Dorne",
@@ -18,6 +30,18 @@ var quizList = [
     points: 2,
     origin: "show",
     footnote: "FUN FACT: Jack Gleeson, who plays the sadistic and cruel King Joffrey, says that his portrayal of the loathsome boy-king was partly influenced by Joaquin Phoenix’s Commodus in 'Gladiator'."},
+    {q: "At the tourney at Harrenhal, who did Rhaegar crown as the Queen of Love and Beauty?",
+    a: ["Elia Martell", "Lyanna Stark", "Queen Rhaella", "Cersei Lannister"],
+    correct: "Lyanna Stark",
+    points: 3,
+    origin: "book",
+    footnote: '"The things we love destroy us every time, lad. Remember that." — Commander Mormont'},
+    {q: "Maester Aemon is from which house?",
+    a: ["House Targaryen", "House Greyjoy", "House Stark", "House Lannister"],
+    correct: "House Targaryen",
+    points: 3,
+    origin: "book",
+    footnote: '"We are only human, and the gods have fashioned us for love. That is our great glory, and our great tragedy." — Aemon Targaryen'},    
     {q: "Which Stark is the 'King Who Knelt'?",
     a: ["Robb Stark", "Brandon Stark", "Rickard Stark", "Torrhen Stark"],
     correct: "Torrhen Stark",
@@ -30,6 +54,18 @@ var quizList = [
     points: 2,
     origin: "show",
     footnote: "FUN FACT: While filming season 7 in Iceland, temperatures sometimes dropped down to -20°F (-28°C)."},
+    {q: "Where is the House of Black and White, the training temple of the Faceless Men?",
+    a: ["Volantis", "Pentos", "Braavos", "Meereen"],
+    correct: "Braavos",
+    points: 2,
+    origin: "show",
+    footnote: '"Fear cuts deeper than swords." — Arya Stark'},    
+    {q: "What is the name of House Tyrell's castle?",
+    a: ["Casterly Rock", "Highgarden", "Storm's End", "The Eyrie"],
+    correct: "Highgarden",
+    points: 2,
+    origin: "show",
+    footnote: '"People often claim to hunger for truth, but seldom like the taste when it\'s served up." — Tyrion Lannister'},    
     {q: "In which book did The Red Wedding happen?",
     a: ["A Feast For Crows", "A Game of Thrones", "A Clash of Kings", "A Storm of Swords"],
     correct: "A Storm of Swords",
@@ -42,6 +78,18 @@ var quizList = [
     points: 2,
     origin: "show",
     footnote: "FUN FACT: One of the petrified dragon eggs from season 1 was given to author George R.R. Martin as a wedding gift."},
+    {q: "Who replaces Varys as Master of Whisperers after he vanishes from King's Landing?",
+    a: ["Qyburn", "Pycelle", "Kevan Lannister", "Mace Tyrell"],
+    correct: "Qyburn",
+    points: 2,
+    origin: "show",
+    footnote: '"A reader lives a thousand lives before he dies. The man who never reads lives only one." — Jojen Reed'},    
+    {q: "Who is the blacksmith at Castle Black?",
+    a: ["Mikken", "Bowen Marsh", "Donal Noye", "Allister Thorne"],
+    correct: "Donal Noye",
+    points: 3,
+    origin: "book",
+    footnote: '"When the snows fall and the white winds blow, the lone wolf dies but the pack survives." — Ned Stark'},    
     {q: "Which one of these is NOT a nickname Arya has gone by?",
     a: ["Lark", "Cat", "Salty", "Weasel"],
     correct: "Lark",
@@ -59,13 +107,19 @@ var quizList = [
     correct: "Hizdar Zo Loraq",
     points: 3,
     origin: "book",
-    footnote: "FUN FACT: When Emilia Clarke first met her on-screen husband Jason Momoa, he screamed 'WIFEY!', ran across the hall, and rugby-tackled her to the floor."}];
+    footnote: "FUN FACT: When Emilia Clarke first met her on-screen husband Jason Momoa, he screamed 'WIFEY!', ran across the hall, and rugby-tackled her to the floor."},
+    {q: "Who is Lady Stoneheart?",
+    a: ["Cersei Lannister", "Catelyn Stark", "Melisandre", "Brienne of Tarth"],
+    correct: "Catelyn Stark",
+    points: 3,
+    origin: "book",
+    footnote: '"Winter is coming."'}];
 // Holding containers to track answers, points, and progress.
 var answerList = [];
 var quizProgress = 0;
 var pointsTotal = 0;
-var pointsPossible = 25;
-var timeSec = 59;
+var pointsPossible = 48;
+var timeSec = 120;
 // Create pointers.
 var timerTag = document.getElementById("countdown");
 var divQ = document.getElementById("question-section");
@@ -112,7 +166,11 @@ h2Res.setAttribute("id", "percentage");
 function countDownTimer() {
     var timer = setInterval(function() {
         timeSec--;
-        if (timeSec >= 10) {
+        if (timeSec >= 70) {
+            timerTag.textContent = " 1:" + (timeSec - 60);
+        } else if (timeSec > 59) {
+            timerTag.textContent = " 1:0" + (timeSec - 60);
+        } else if (timeSec > 9) {
             timerTag.textContent = " 0:" + timeSec;
         } else {
             timerTag.textContent = " 0:0" + timeSec;
@@ -204,6 +262,7 @@ function addQuizElements() {
     divF.appendChild(hrTag);
     divF.appendChild(h2Tag);
 }
+// Clear game board.
 function endGame() {
         divQ.removeChild(h1Tag);
         divA.removeChild(b1Tag);
@@ -216,13 +275,13 @@ function endGame() {
 // Display results.
 function displayResults() {
     divQ.appendChild(h1Res);
-    if (((pointsTotal/pointsPossible) * 100) >= 85) {
+    if (((pointsTotal/pointsPossible) * 100) >= 80) {
         h1Res.textContent = "The Throne Is Yours";
     } else {
         h1Res.textContent = "Valar Morghulis";
     }
     divA.appendChild(h2Res);
-    h2Res.textContent = "Score: " + ((pointsTotal/pointsPossible) * 100) + "%";
+    h2Res.textContent = "Score: " + Math.round(((pointsTotal/pointsPossible)) * 100) + "%";
 }
 
 ///// EVENT LISTENERS /////
@@ -242,16 +301,8 @@ b2Tag.addEventListener("click", getQuizObjects);
 b3Tag.addEventListener("click", getQuizObjects);
 b4Tag.addEventListener("click", getQuizObjects);
 
-///// EXECUTE /////
-endGame();
 
 
 
 ///// TO DO //////
-// Get results to display.
-// Create interval timer.
 // Create scoreboard that can store info.
-
-
-// After the last question is submitted... clear screen except for h1... rewrite h1 with statement about the results, something fun like Valar Marghulis (all men must die) if they did poorly. So I need to create a few text option for h1, and the one that executes will depend on the score. I want the score displayed as a percentage in the middle of the screen. In order to calculate a percentage, I need to create a variable that holds the value of all possible points, and then do some division to get the resulting percentage.
-
