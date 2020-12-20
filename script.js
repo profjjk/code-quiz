@@ -114,7 +114,7 @@ var quizList = [
     points: 3,
     origin: "book",
     footnote: '"Winter is coming."'}];
-// Holding containers to track answers, points, and progress.
+// Holding containers to track answers, points, progress, and time.
 var answerList = [];
 var quizProgress = 0;
 var pointsTotal = 0;
@@ -149,13 +149,9 @@ h2Tag = document.createElement("h2");
 h2Res = document.createElement("h2");
 // Assign attributes to elements.
 h1Tag.setAttribute("id", "question-text");
-b1Tag.setAttribute("class", "button");
 b1Tag.setAttribute("id", "answer1");
-b2Tag.setAttribute("class", "button");
 b2Tag.setAttribute("id", "answer2");
-b3Tag.setAttribute("class", "button");
 b3Tag.setAttribute("id", "answer3");
-b4Tag.setAttribute("class", "button");
 b4Tag.setAttribute("id", "answer4");
 h2Tag.setAttribute("id", "footnote");
 h1Res.setAttribute("id", "game-over");
@@ -264,11 +260,12 @@ function addQuizElements() {
 }
 // Clear game board.
 function endGame() {
+        // Error message| Uncaught DOMException: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.
         divQ.removeChild(h1Tag);
         divA.removeChild(b1Tag);
         divA.removeChild(b2Tag);
         divA.removeChild(b3Tag);
-        divA.removeChild(b4Tag);
+        divA.removeChild(b4Tag); 
         divF.removeChild(hrTag);
         divF.removeChild(h2Tag);
 }
