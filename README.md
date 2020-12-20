@@ -11,7 +11,7 @@
 ---
 
 ## Project Summary
-This is a Game of Thrones themed quiz.
+This is a Game of Thrones themed quiz. There are 20 questions that are worth varying points. An incorrect answer decreases the timer by 5 seconds.
 
 ## Technologies Used
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -22,14 +22,16 @@ This is a Game of Thrones themed quiz.
 
 
 ## How to Access
-
+[Game of Thrones Quiz](https://profjjk.github.io/code-quiz/)
 
 ## About Me
 * [LinkedIn](www.linkedin.com/in/the-real-jordan-kelly)
 * [GitHub](https://github.com/profjjk)
 
 ## Screenshots
-
+![Welcome Screen](img/welcome-screen.png)
+![Question Screen](img/question-screen.png)
+![Result Screen](img/result-screen.png)
 
 ## Resource Reference
 Images:
@@ -44,5 +46,6 @@ Quiz questions:
 * [Jinny's Quiz](https://www.goodreads.com/quizzes/9484-a-song-of-ice-and-fire-quiz)
 * [The Guardian's Quiz](https://www.theguardian.com/tv-and-radio/quiz/2015/apr/11/game-of-thrones-quiz)
 
-Fun facts:
+Fun facts & quotes:
 * [GoT fun facts](https://www.boredpanda.com/game-of-thrones-facts/?utm_source=google&utm_medium=organic&utm_campaign=organic)
+* [GoT quotes](https://reedsy.com/discovery/blog/best-game-of-thrones-quotes)
