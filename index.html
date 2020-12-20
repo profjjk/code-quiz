@@ -5,7 +5,6 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
         <!-- My stylesheet -->
         <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -14,7 +13,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap" rel="stylesheet">
-        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap" rel="stylesheet">
 
         <title>GoT Nerd Quiz</title>
     </head>
@@ -22,8 +22,8 @@
         <!-- Scoreboard & Timer -->
         <header class="row">
             <div class="col-3" id="scoreboard">Scoreboard</div>
-            <div class="col-6" id="title">Game Of Thrones<br><span>Nerd Quiz</span></div>
-            <div class="col-3" id="timer">Time 0:00</div>
+            <div class="col-6" id="title">Game Of Thrones<br><span id="nerd">Nerd Quiz</span></div>
+            <div class="col-3" id="timer">Timer<span id="countdown"></span></div>
         </header>
 
         <main class="row">
@@ -35,8 +35,6 @@
                     <button id="begin">BEGIN GAME</button>
                 </div> 
                 <div id="fact-section">
-                    <!--hr-->
-                    <!--h2 id="footnote"></h2-->
                 </div>
             </section>
         </main>

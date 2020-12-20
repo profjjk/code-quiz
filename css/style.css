@@ -9,7 +9,6 @@
          url('game_of_thrones-webfont.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-
 }
 
 body {
@@ -48,7 +47,7 @@ body {
     margin-top: 3%;
 }
 
-span {
+#nerd {
     font-family: 'Cinzel Decorative', cursive;
     font-size: 24px;
     text-align: center;
@@ -61,6 +60,10 @@ span {
     text-align: end;
     color: #fff;
     padding: 1% 1% 0 0;
+}
+#countdown {
+    font-family: 'Inconsolata', monospace;
+    font-size: 20px;
 }
 
 /* MAIN */
@@ -82,6 +85,13 @@ span {
 #question-text {
     font-family: 'Cinzel Decorative', cursive;
     font-size: 28px;
+}
+
+#game-over {
+    font-family: 'Cinzel Decorative', cursive;
+    font-size: 36px;
+    text-align: center;
+    margin: auto;
 }
 
 #welcome {
@@ -110,6 +120,13 @@ button {
     align-content: space-evenly;
 }
 
+#percentage {
+    font-family: 'Crimson Text', serif;
+    font-size: 32px;
+    text-align: center;
+    margin: auto;
+}
+
 #fact-section {
     margin: 5% auto;
     width: 70%;
@@ -121,3 +138,6 @@ button {
     font-family: 'Crimson Text', serif;
     font-size: 16px;
 }
+
+/***** TO DO *****/
+/* Create media queries for screen breakpoints */
