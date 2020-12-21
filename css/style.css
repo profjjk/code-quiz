@@ -94,6 +94,11 @@ body {
     margin: auto;
 }
 
+#vm-meaning {
+    color: black;
+    text-decoration: none;
+}
+
 #welcome {
     font-family: 'Cinzel Decorative', cursive;
     font-size: 36px;

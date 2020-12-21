@@ -135,6 +135,7 @@ var b4Tag = document.getElementById("answer4");
 var h2Tag = document.getElementById("footnote");
 var h1Res = document.getElementById("game-over");
 var h2Res = document.getElementById("percentage");
+var aTag = document.getElementById("vm-meaning");
 
 ///// CREATE ELEMENTS /////
 // Create elements.
@@ -147,6 +148,7 @@ b4Tag = document.createElement("button");
 hrTag = document.createElement("hr");
 h2Tag = document.createElement("h2");
 h2Res = document.createElement("h2");
+aTag = document.createElement("a");
 // Assign attributes to elements.
 h1Tag.setAttribute("id", "question-text");
 b1Tag.setAttribute("id", "answer1");
@@ -156,6 +158,8 @@ b4Tag.setAttribute("id", "answer4");
 h2Tag.setAttribute("id", "footnote");
 h1Res.setAttribute("id", "game-over");
 h2Res.setAttribute("id", "percentage");
+aTag.setAttribute("id", "vm-meaning");
+aTag.setAttribute("href", "https://awoiaf.westeros.org/index.php/Valar_morghulis");
 
 ///// FUNCTIONS /////
 // Countdown timer | game time-out.
@@ -275,7 +279,8 @@ function displayResults() {
     if (((pointsTotal/pointsPossible) * 100) >= 80) {
         h1Res.textContent = "The Throne Is Yours";
     } else {
-        h1Res.textContent = "Valar Morghulis";
+        h1Res.appendChild(aTag);
+        aTag.textContent = "Valar Morghulis";
     }
     divA.appendChild(h2Res);
     h2Res.textContent = "Score: " + Math.round(((pointsTotal/pointsPossible)) * 100) + "%";
@@ -303,3 +308,4 @@ b4Tag.addEventListener("click", getQuizObjects);
 
 ///// TO DO //////
 // Create scoreboard that can store info.
+// Figure out error message from the 'clear game board' area.
