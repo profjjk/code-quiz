@@ -166,7 +166,7 @@ aTag.setAttribute("href", "https://awoiaf.westeros.org/index.php/Valar_morghulis
 function countDownTimer() {
     var timer = setInterval(function() {
         timeSec--;
-        if (timeSec >= 70) {
+        if (timeSec > 69) {
             timerTag.textContent = " 1:" + (timeSec - 60);
         } else if (timeSec > 59) {
             timerTag.textContent = " 1:0" + (timeSec - 60);
@@ -194,7 +194,7 @@ function getQuizObjects() {
         h2Tag.textContent = quizList[quizProgress].footnote;
     }
 }
-// Record button clicks.
+// Button behaviors.
 function recordAnswerB1() {
     answerList.push(b1Tag.textContent);
     if (answerList[quizProgress] === quizList[quizProgress].correct) {
@@ -276,7 +276,7 @@ function endGame() {
 // Display results.
 function displayResults() {
     divQ.appendChild(h1Res);
-    if (((pointsTotal/pointsPossible) * 100) >= 80) {
+    if (((pointsTotal/pointsPossible) * 100) >= 50) {
         h1Res.textContent = "The Throne Is Yours";
     } else {
         h1Res.appendChild(aTag);
@@ -309,3 +309,4 @@ b4Tag.addEventListener("click", getQuizObjects);
 ///// TO DO //////
 // Create scoreboard that can store info.
 // Figure out error message from the 'clear game board' area.
+// Maybe: display something to indicate whether or not the correct answer was chosen.
