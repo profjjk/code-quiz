@@ -136,6 +136,10 @@ var h2Tag = document.getElementById("footnote");
 var h1Res = document.getElementById("game-over");
 var h2Res = document.getElementById("percentage");
 var aTag = document.getElementById("vm-meaning");
+var preScore = document.getElementById("previous-score");
+var inputLabel = document.getElementById("input-label");
+var inputField = document.getElementById("input-field");
+var inputButton = document.getElementById("input-button");
 
 ///// CREATE ELEMENTS /////
 // Create elements.
@@ -149,6 +153,10 @@ hrTag = document.createElement("hr");
 h2Tag = document.createElement("h2");
 h2Res = document.createElement("h2");
 aTag = document.createElement("a");
+preScore = document.createElement("h3");
+inputLabel = document.createElement("label");
+inputField = document.createElement("input");
+inputButton = document.createElement("button");
 // Assign attributes to elements.
 h1Tag.setAttribute("id", "question-text");
 b1Tag.setAttribute("id", "answer1");
@@ -160,6 +168,10 @@ h1Res.setAttribute("id", "game-over");
 h2Res.setAttribute("id", "percentage");
 aTag.setAttribute("id", "vm-meaning");
 aTag.setAttribute("href", "https://awoiaf.westeros.org/index.php/Valar_morghulis");
+preScore.setAttribute("id", "previous-score");
+inputLabel.setAttribute("id", "input-label");
+inputField.setAttribute("id", "input-field");
+inputButton.setAttribute("id", "input-button");
 
 ///// FUNCTIONS /////
 // Countdown timer | game time-out.
@@ -284,7 +296,32 @@ function displayResults() {
     }
     divA.appendChild(h2Res);
     h2Res.textContent = "Score: " + Math.round(((pointsTotal/pointsPossible)) * 100) + "%";
+    getLastResults();
+    divF.appendChild(inputLabel).textContent = "Enter name: ";
+    divF.appendChild(inputField);
+    divF.appendChild(inputButton). textContent = "Submit";
 }
+// Get previous results.
+function getLastResults() {
+    var lastPlayer = localStorage.getItem("name");
+    var lastScore = localStorage.getItem("score");
+    if (lastPlayer === "" || lastScore === "") {
+        return;
+    } else {
+        divA.appendChild(preScore);
+        preScore.textContent = lastPlayer + " scored " + lastScore + "% last time."
+    }
+}
+
+// Log name and score to local storage.
+function saveResults() {
+    localStorage.clear;
+    playername = inputField.value;
+    localStorage.setItem("name", playername);
+    playerscore = Math.round(((pointsTotal/pointsPossible)) * 100);
+    localStorage.setItem("score", playerscore);
+}
+
 
 ///// EVENT LISTENERS /////
 // Welcome - quiz transition.
@@ -302,8 +339,8 @@ b1Tag.addEventListener("click", getQuizObjects);
 b2Tag.addEventListener("click", getQuizObjects);
 b3Tag.addEventListener("click", getQuizObjects);
 b4Tag.addEventListener("click", getQuizObjects);
-
-
+// Save quiz results to local storage.
+inputButton.addEventListener("click", saveResults);
 
 
 ///// TO DO //////
