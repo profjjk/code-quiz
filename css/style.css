@@ -112,12 +112,6 @@ button {
     text-align: center;
     margin: auto;
 }
-#previous-score {
-    font-family: 'Crimson Text', serif;
-    font-size: 20px;
-    text-align: center;
-    margin: auto;
-}
 
 /***** FOOTER *****/
 #fact-section {
@@ -150,6 +144,18 @@ button {
     width: 20%;
     margin: auto;
     float: right;
+}
+#score-saved {
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+    text-align: center;
+    margin: auto;
+}
+#score-card {
+    font-family: 'Crimson Text', serif;
+    font-size: 20px;
+    text-align: center;
+    margin: auto;
 }
 
 /***** BREAKPOINTS *****/

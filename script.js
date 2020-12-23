@@ -120,7 +120,9 @@ var quizProgress = 0;
 var pointsTotal = 0;
 var pointsPossible = 48;
 var timeSec = 120;
+var scoreHist = [];
 // Create pointers.
+var scoreBoard = document.getElementById("scoreboard");
 var timerTag = document.getElementById("countdown");
 var divQ = document.getElementById("question-section");
 var divA = document.getElementById("answer-section");
@@ -135,11 +137,12 @@ var b4Tag = document.getElementById("answer4");
 var h2Tag = document.getElementById("footnote");
 var h1Res = document.getElementById("game-over");
 var h2Res = document.getElementById("percentage");
+var h3Res = document.getElementById("score-saved");
 var aTag = document.getElementById("vm-meaning");
-var preScore = document.getElementById("previous-score");
 var inputLabel = document.getElementById("input-label");
 var inputField = document.getElementById("input-field");
 var inputButton = document.getElementById("input-button");
+var scoreCard = document.getElementById("score-card");
 
 ///// CREATE ELEMENTS /////
 // Create elements.
@@ -153,7 +156,8 @@ hrTag = document.createElement("hr");
 h2Tag = document.createElement("h2");
 h2Res = document.createElement("h2");
 aTag = document.createElement("a");
-preScore = document.createElement("h3");
+h3Res = document.createElement("h3");
+scoreCard = document.createElement("ul");
 inputLabel = document.createElement("label");
 inputField = document.createElement("input");
 inputButton = document.createElement("button");
@@ -166,12 +170,13 @@ b4Tag.setAttribute("id", "answer4");
 h2Tag.setAttribute("id", "footnote");
 h1Res.setAttribute("id", "game-over");
 h2Res.setAttribute("id", "percentage");
+h3Res.setAttribute("id", "score-saved");
 aTag.setAttribute("id", "vm-meaning");
 aTag.setAttribute("href", "https://awoiaf.westeros.org/index.php/Valar_morghulis");
-preScore.setAttribute("id", "previous-score");
 inputLabel.setAttribute("id", "input-label");
 inputField.setAttribute("id", "input-field");
 inputButton.setAttribute("id", "input-button");
+scoreCard.setAttribute("id", "score-card");
 
 ///// FUNCTIONS /////
 // Countdown timer | game time-out.
@@ -263,6 +268,7 @@ function recordAnswerB4() {
 function removeWelcome() {
     divQ.removeChild(h1Wel);
     divA.removeChild(b1Beg);
+    console.log(scoreHist);
 }
 // Add game elements.
 function addQuizElements() {
@@ -296,30 +302,48 @@ function displayResults() {
     }
     divA.appendChild(h2Res);
     h2Res.textContent = "Score: " + Math.round(((pointsTotal/pointsPossible)) * 100) + "%";
-    getLastResults();
+    retrieveFromStorage();
     divF.appendChild(inputLabel).textContent = "Enter name: ";
     divF.appendChild(inputField);
     divF.appendChild(inputButton). textContent = "Submit";
-}
-// Get previous results.
-function getLastResults() {
-    var lastPlayer = localStorage.getItem("name");
-    var lastScore = localStorage.getItem("score");
-    if (lastPlayer === "" || lastScore === "") {
-        return;
-    } else {
-        divA.appendChild(preScore);
-        preScore.textContent = lastPlayer + " scored " + lastScore + "% last time."
-    }
+    
 }
 
 // Log name and score to local storage.
 function saveResults() {
-    localStorage.clear;
-    playername = inputField.value;
-    localStorage.setItem("name", playername);
-    playerscore = Math.round(((pointsTotal/pointsPossible)) * 100);
-    localStorage.setItem("score", playerscore);
+    divF.removeChild(inputLabel);
+    divF.removeChild(inputField);
+    divF.removeChild(inputButton);
+    divF.appendChild(h3Res);
+    writeToStorage();
+    h3Res.textContent = "Your score has been saved!";
+}
+// Record player data.
+function writeToStorage() {
+    var player = {name: inputField.value, score: Math.round(((pointsTotal/pointsPossible)) * 100)};
+    scoreHist.push(player);
+    localStorage.setItem("scores", JSON.stringify(scoreHist));
+}
+// Access player history.
+function retrieveFromStorage() {
+    if (localStorage === "") {
+        return;
+    } else {
+        scoreHist = JSON.parse(localStorage.getItem("scores")) || [];
+    }
+}
+// Display scoreboard history on screen.
+function displayScoreboard() {
+    h1Res.removeChild(aTag);
+    divA.removeChild(h2Res);
+    divF.removeChild(h3Res);
+    divA.appendChild(scoreCard);
+    // retrieveFromStorage();
+    for (var i = 0; i < scoreHist.length; i++) {
+        var player = document.createElement("li");
+        scoreCard.appendChild(player);
+        player.textContent = scoreHist[i].name + " - " + scoreHist[i].score +"%";
+    }
 }
 
 
@@ -339,11 +363,26 @@ b1Tag.addEventListener("click", getQuizObjects);
 b2Tag.addEventListener("click", getQuizObjects);
 b3Tag.addEventListener("click", getQuizObjects);
 b4Tag.addEventListener("click", getQuizObjects);
-// Save quiz results to local storage.
+// Save quiz results & scoreboard.
 inputButton.addEventListener("click", saveResults);
+scoreBoard.addEventListener("click", displayScoreboard); 
+
 
 
 ///// TO DO //////
 // Create scoreboard that can store info.
 // Figure out error message from the 'clear game board' area.
 // Maybe: display something to indicate whether or not the correct answer was chosen.
+
+// When the game is finished:
+    // Display win/loss message - done
+    // Display score as percentage - done
+    // Create input field for player to enter name. - done
+        // After submit button clicked, clear the elements and create a new element that informs the player that their name & score have been saved.
+    // Store score and name to local storage.
+        // Use JSON.parse to retrieve any existing data in local storage.
+            // If something is found, assign it to a list as an object.
+            // Create elements on page to make a list of data pulled from the list that was just created, and hide those elements.
+        // Capture name and score and push them to the list along with everything that was captured from storage.
+        // Use JSON.stringify to store list of objects back into local storage as a string.
+    // If 'Scoreboard' is clicked, make the list elements visible on page.
