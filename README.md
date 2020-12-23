@@ -11,7 +11,7 @@
 ---
 
 ## Project Summary
-This is a Game of Thrones themed quiz. There are 20 questions that are worth varying points. An incorrect answer decreases the timer by 5 seconds.
+This is a Game of Thrones themed quiz consisting of 20 questions and set to a timer. Wrong answers will decrease the timer. Correct answers will be scored and a percentage will display at the end. Player names and scores are stored for reference and can be called upon by clicking on the scoreboard. WARNING: This quiz is only for true fans, play at your own risk.
 
 ## Technologies Used
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -19,6 +19,71 @@ This is a Game of Thrones themed quiz. There are 20 questions that are worth var
 * [CSS3](https://developer.mozilla.org/en-US/docs/Archive/CSS3)
 
 ## Example Code
+Retrieve data from an array of objects.
+```
+function getQuizObjects() {
+    if (answerList.length < quizList.length) {
+        h1Tag.textContent = quizList[quizProgress].q;
+        b1Tag.textContent = quizList[quizProgress].a[0];
+        b2Tag.textContent = quizList[quizProgress].a[1];
+        b3Tag.textContent = quizList[quizProgress].a[2];
+        b4Tag.textContent = quizList[quizProgress].a[3];
+        h2Tag.textContent = quizList[quizProgress].footnote;
+    }
+}
+```
+Record button behaviors with event listeners.
+```
+function recordAnswerB1() {
+    answerList.push(b1Tag.textContent);
+    if (answerList[quizProgress] === quizList[quizProgress].correct) {
+        pointsTotal += quizList[quizProgress].points;
+    } else {
+        timeSec -= 5;
+    }
+    if (answerList.length === quizList.length) {
+        endGame();
+        displayResults();
+    }
+    quizProgress++;
+}
+```
+```
+b1Tag.addEventListener("click", recordAnswerB1);
+```
+Write to local storage ...
+```
+function writeToStorage() {
+    var player = {name: inputField.value, score: Math.round(((pointsTotal/pointsPossible)) * 100)};
+    scoreHist.push(player);
+    localStorage.setItem("scores", JSON.stringify(scoreHist));
+}
+```
+... and retrieve from local storage.
+```
+function retrieveFromStorage() {
+    if (localStorage === "") {
+        return;
+    } else {
+        scoreHist = JSON.parse(localStorage.getItem("scores")) || [];
+    }
+}
+```
+Append & remove elements, and track player scores.
+```
+function displayScoreboard() {
+    h1Res.removeChild(aTag);
+    divA.removeChild(h2Res);
+    divF.removeChild(h3Res);
+    divA.appendChild(scoreCard);
+    // retrieveFromStorage();
+    for (var i = 0; i < 5; i++) {
+        var player = document.createElement("li");
+        scoreCard.appendChild(player);
+        player.textContent = scoreHist[i].name + " - " + scoreHist[i].score +"%";
+    }
+}
+```
 
 
 ## How to Access

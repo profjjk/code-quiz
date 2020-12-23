@@ -119,7 +119,7 @@ var answerList = [];
 var quizProgress = 0;
 var pointsTotal = 0;
 var pointsPossible = 48;
-var timeSec = 120;
+var timeSec = 180;
 var scoreHist = [];
 // Create pointers.
 var scoreBoard = document.getElementById("scoreboard");
@@ -183,7 +183,11 @@ scoreCard.setAttribute("id", "score-card");
 function countDownTimer() {
     var timer = setInterval(function() {
         timeSec--;
-        if (timeSec > 69) {
+        if (timeSec > 129) {
+            timerTag.textContent = " 2:" + (timeSec - 120);
+        } else if ( timeSec > 119) {
+            timerTag.textContent = " 2:0" + (timeSec - 120);
+        } else if (timeSec > 69) {
             timerTag.textContent = " 1:" + (timeSec - 60);
         } else if (timeSec > 59) {
             timerTag.textContent = " 1:0" + (timeSec - 60);
@@ -341,7 +345,7 @@ function displayScoreboard() {
     divF.removeChild(h3Res);
     divA.appendChild(scoreCard);
     // retrieveFromStorage();
-    for (var i = 0; i < scoreHist.length; i++) {
+    for (var i = 0; i < 5; i++) {
         var player = document.createElement("li");
         scoreCard.appendChild(player);
         player.textContent = scoreHist[i].name + " - " + scoreHist[i].score +"%";

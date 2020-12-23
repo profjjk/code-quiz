@@ -31,9 +31,7 @@ body {
     font-size: 16px;
     text-align: start;
     color: #fff;
-    border: none;
-    background: none;
-    display: block;
+    text-decoration: none;
 }
 #title {
     font-family: 'game_of_thronesregular', 'Cinzel Decorative', cursive;
