@@ -173,6 +173,7 @@ h2Res.setAttribute("id", "percentage");
 h3Res.setAttribute("id", "score-saved");
 aTag.setAttribute("id", "vm-meaning");
 aTag.setAttribute("href", "https://awoiaf.westeros.org/index.php/Valar_morghulis");
+aTag.setAttribute("target", "_blank");
 inputLabel.setAttribute("id", "input-label");
 inputField.setAttribute("id", "input-field");
 inputButton.setAttribute("id", "input-button");
