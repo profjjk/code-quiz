@@ -200,6 +200,8 @@ function countDownTimer() {
         }
     }, 1000);
 }
+
+
 // Retrieve data from quizList.
 function getQuizObjects() {
     if (answerList.length < quizList.length) {
@@ -366,23 +368,3 @@ b4Tag.addEventListener("click", getQuizObjects);
 // Save quiz results & scoreboard.
 inputButton.addEventListener("click", saveResults);
 scoreBoard.addEventListener("click", displayScoreboard); 
-
-
-
-///// TO DO //////
-// Create scoreboard that can store info.
-// Figure out error message from the 'clear game board' area.
-// Maybe: display something to indicate whether or not the correct answer was chosen.
-
-// When the game is finished:
-    // Display win/loss message - done
-    // Display score as percentage - done
-    // Create input field for player to enter name. - done
-        // After submit button clicked, clear the elements and create a new element that informs the player that their name & score have been saved.
-    // Store score and name to local storage.
-        // Use JSON.parse to retrieve any existing data in local storage.
-            // If something is found, assign it to a list as an object.
-            // Create elements on page to make a list of data pulled from the list that was just created, and hide those elements.
-        // Capture name and score and push them to the list along with everything that was captured from storage.
-        // Use JSON.stringify to store list of objects back into local storage as a string.
-    // If 'Scoreboard' is clicked, make the list elements visible on page.

@@ -16,6 +16,7 @@ body {
 .row {  
     display: flex;
     flex-flow: row wrap;
+    padding: 2%;
 }
 
 /***** HEADER *****/
@@ -30,7 +31,9 @@ body {
     font-size: 16px;
     text-align: start;
     color: #fff;
-    padding: 1% 0 0 1%;
+    border: none;
+    background: none;
+    display: block;
 }
 #title {
     font-family: 'game_of_thronesregular', 'Cinzel Decorative', cursive;
@@ -50,7 +53,6 @@ body {
     font-size: 16px;
     text-align: end;
     color: #fff;
-    padding: 1% 1% 0 0;
 }
 #countdown {
     font-family: 'Inconsolata', monospace;
@@ -99,7 +101,7 @@ body {
     font-size: 24px;
     margin: auto;
 }
-button {
+main button {
     font-family: 'Crimson Text', serif;
     font-size: 24px;
     display: block;
@@ -156,6 +158,11 @@ button {
     font-size: 20px;
     text-align: center;
     margin: auto;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 /***** BREAKPOINTS *****/
