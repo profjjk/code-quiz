@@ -11,7 +11,7 @@
 ---
 
 ## Project Summary
-This is a Game of Thrones themed quiz consisting of 20 questions and set to a timer. Wrong answers will decrease the timer. Correct answers will be scored and a percentage will display at the end. Player names and scores are stored for reference and can be called upon by clicking on the scoreboard. WARNING: This quiz is only for true fans, play at your own risk.
+This is a Game of Thrones themed quiz consisting of 20 questions and set to a timer. Wrong answers will decrease the timer. Correct answers will be scored and a percentage will display at the end. Player names and scores are stored for reference and can be called upon by clicking on the scoreboard.
 
 ## Technologies Used
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
@@ -87,7 +87,7 @@ function displayScoreboard() {
 
 
 ## How to Access
-[Game of Thrones Quiz](https://profjjk.github.io/code-quiz/)
+[Game of Thrones Quiz](https://profjjk.github.io/GoT-Quiz/)
 
 ## About Me
 * [LinkedIn](www.linkedin.com/in/the-real-jordan-kelly)

@@ -163,6 +163,13 @@ ul {
     padding: 0;
 }
 
+button:hover {
+    cursor: pointer;
+}
+
+a:hover {
+    cursor: pointer;
+}
 /***** BREAKPOINTS *****/
 @media screen and (max-width: 481px) {
     #game-box {
